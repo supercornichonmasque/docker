@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     echo "Création de l'image Docker: ${IMAGE}"
-                    sh "docker build -t ${IMAGE} ."
+                    sh "docker build -t ${IMAGE}"
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     echo "Suppression du conteneur"
-                    sh "docker rm ${CONTENEUR}'"
+                    sh "docker rm ${CONTENEUR}"
                 }
             }
         }
