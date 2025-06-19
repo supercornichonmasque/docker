@@ -18,6 +18,25 @@ pipeline {
             }
         }
 
+        
+        stage('Stop') {
+            steps {
+                script {
+                    echo "Arrêt du conteneur"
+                    sh "docker stop ${CONTENEUR} || true"
+                }
+            }
+        }
+
+        stage('Suppr') {
+            steps {
+                script {
+                    echo "Suppression du conteneur"
+                    sh "docker rm ${CONTENEUR} || true"
+                }
+            }
+        }
+
         stage('Demarre') {
             steps {
                 script {
@@ -28,22 +47,5 @@ pipeline {
         }
 
         
-        stage('Stop') {
-            steps {
-                script {
-                    echo "Arrêt du conteneur"
-                    sh "docker stop ${CONTENEUR}"
-                }
-            }
-        }
-
-        stage('Suppr') {
-            steps {
-                script {
-                    echo "Suppression du conteneur"
-                    sh "docker rm ${CONTENEUR}"
-                }
-            }
-        }
     }
 }
