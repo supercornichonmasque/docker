@@ -18,6 +18,16 @@ pipeline {
             }
         }
 
+        stage('Demarre') {
+            steps {
+                script {
+                    echo "Démarrage du conteneur depuis ${IMAGE}"
+                    sh "docker run -d --name ${CONTENEUR} -p 9000:80 ${IMAGE}"
+                }
+            }
+        }
+
+        
         stage('Stop') {
             steps {
                 script {
@@ -32,15 +42,6 @@ pipeline {
                 script {
                     echo "Suppression du conteneur"
                     sh "docker rm ${CONTENEUR}"
-                }
-            }
-        }
-
-        stage('Demarre') {
-            steps {
-                script {
-                    echo "Démarrage du conteneur depuis ${IMAGE}"
-                    sh "docker run -d --name ${CONTENEUR} -p 9000:80 ${IMAGE}"
                 }
             }
         }
