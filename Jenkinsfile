@@ -45,5 +45,22 @@ pipeline {
                 }
             }
         }
+
+         stage('Copier fichier HTML') {
+            steps {
+                script {
+                    sh 'sudo cp index.html /var/www/html/'
+                }
+            }
+        }
+
+        stage('Redémarrer Apache') {
+            steps {
+                script {
+                    sh 'sudo systemctl restart apache2'
+                }
+            }
+        }
+    
     }
 }
