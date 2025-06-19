@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     echo "Création de l'image Docker: ${IMAGE}"
-                    sh "docker build -t ${IMAGE}"
+                    sh "docker build -t ${IMAGE} ."
                 }
             }
         }
